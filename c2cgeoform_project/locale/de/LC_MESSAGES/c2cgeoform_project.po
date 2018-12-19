@@ -1,0 +1,190 @@
+#
+# German translations for PACKAGE package
+# German messages for PACKAGE
+# This file is distributed under the same license as the PACKAGE package.
+# Arnaud Morvan <contact@camptocamp.com>, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE 1.0\n"
+"POT-Creation-Date: 2016-02-17 11:07+0100\n"
+"PO-Revision-Date: 2016-01-29 14:19+0100\n"
+"Last-Translator: Arnaud Morvan <contact@camptocamp.com>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Lingua 4.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: c2cgeoform_project/models.py:54
+msgid "Contact Person"
+msgstr ""
+
+#: c2cgeoform_project/models.py:63
+msgid "First name"
+msgstr ""
+
+#: c2cgeoform_project/models.py:67
+msgid "Last name"
+msgstr ""
+
+#: c2cgeoform_project/models.py:81 c2cgeoform_project/models.py:284
+msgid "Photo"
+msgstr ""
+
+#: c2cgeoform_project/models.py:111
+msgid "Application form for permission to carry out excavation work"
+msgstr ""
+
+#: c2cgeoform_project/models.py:118
+msgid "Permission Number"
+msgstr ""
+
+#: c2cgeoform_project/models.py:128
+msgid "Reference Number"
+msgstr ""
+
+#: c2cgeoform_project/models.py:132
+msgid "Request Date"
+msgstr ""
+
+#: c2cgeoform_project/models.py:138
+msgid "Description of the Work"
+msgstr ""
+
+#: c2cgeoform_project/models.py:143
+msgid "Motive for the Work"
+msgstr ""
+
+#: c2cgeoform_project/models.py:153
+msgid "Situation"
+msgstr ""
+
+#: c2cgeoform_project/models.py:173
+msgid "Contact Persons"
+msgstr ""
+
+#: c2cgeoform_project/models.py:177
+msgid "District"
+msgstr ""
+
+#: c2cgeoform_project/models.py:189 c2cgeoform_project/models.py:233
+msgid "- Select -"
+msgstr ""
+
+#: c2cgeoform_project/models.py:194
+msgid "Street"
+msgstr ""
+
+#: c2cgeoform_project/models.py:198
+msgid "Postal Code"
+msgstr ""
+
+#: c2cgeoform_project/models.py:202
+msgid "Town"
+msgstr ""
+
+#: c2cgeoform_project/models.py:207
+msgid "Address"
+msgstr ""
+
+#: c2cgeoform_project/models.py:221
+msgid "Position"
+msgstr ""
+
+#: c2cgeoform_project/models.py:230
+msgid "Title"
+msgstr ""
+
+#: c2cgeoform_project/models.py:234
+msgid "Mr."
+msgstr ""
+
+#: c2cgeoform_project/models.py:235
+msgid "Mrs."
+msgstr ""
+
+#: c2cgeoform_project/models.py:240
+msgid "Name"
+msgstr ""
+
+#: c2cgeoform_project/models.py:245
+msgid "First Name"
+msgstr ""
+
+#: c2cgeoform_project/models.py:250
+msgid "Mobile Phone"
+msgstr ""
+
+#: c2cgeoform_project/models.py:254
+msgid "Mail"
+msgstr ""
+
+#: c2cgeoform_project/models.py:259
+msgid "Company"
+msgstr ""
+
+#: c2cgeoform_project/models.py:264
+msgid "Validation"
+msgstr ""
+
+#: c2cgeoform_project/models.py:265
+msgid "Validated"
+msgstr ""
+
+#: c2cgeoform_project/models.py:272
+msgid "Footprint for the Work"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:33
+msgid "There was a problem with your submission"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:34
+msgid "Errors have been highlighted below"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:44
+msgid "Basic"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:54
+msgid "Location"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:70
+msgid "Person in Charge for the Work"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:88
+msgid "Footprint"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Cancel"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "current step:"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Pagination"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Proceed"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Next"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Previous"
+msgstr ""
+
+#: c2cgeoform_project/templates/form.pt:285
+msgid "Loading ..."
+msgstr ""
