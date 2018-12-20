@@ -19,6 +19,8 @@ from ..models import (
     get_tm_session,
     )
 
+from ..models.abattage import schema
+'''
 from ..models.c2cgeoform_demo import (
     schema,
     Address,
@@ -28,7 +30,7 @@ from ..models.c2cgeoform_demo import (
     Situation,
     ContactPerson
     )
-
+'''
 
 def usage(argv):
     cmd = os.path.basename(argv[0])
@@ -80,6 +82,8 @@ WHERE schema_name = '{}';
 
 
 def setup_test_data(dbsession):
+    pass
+'''
     if dbsession.query(District).count() == 0:
         dbsession.add(District(id=0, name="Pully"))
         dbsession.add(District(id=1, name="Paudex"))
@@ -113,8 +117,8 @@ def setup_test_data(dbsession):
     if dbsession.query(Excavation).count() == 0:
         for i in range(100):
             dbsession.add(_excavation(i, dbsession))
-
-
+'''
+'''
 def _excavation(i, dbsession):
     situations = dbsession.query(Situation).all()
     addresses = dbsession.query(Address).all()
@@ -178,3 +182,4 @@ def _add_bus_stops(dbsession):
         bus_stops.append(bus_stop)
 
     dbsession.add_all(bus_stops)
+'''

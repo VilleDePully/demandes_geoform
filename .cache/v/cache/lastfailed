@@ -1,0 +1,11 @@
+{
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_delete_success": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_duplicate": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_edit_new_then_save": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_edit_new_then_save_with_missing_field": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_edit_then_save": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_grid": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_grid_filter": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_index": true,
+  "acceptance_tests/excavation_test.py::TestExcavationViews::()::test_unique_validator": true
+}
