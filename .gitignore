@@ -9,4 +9,5 @@
 *.egg-info
 
 .build/
+.cache/
 node_modules
