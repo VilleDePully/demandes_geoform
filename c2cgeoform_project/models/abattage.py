@@ -3,6 +3,7 @@
 # Imports
 
 from uuid import uuid4
+from datetime import date
 
 from sqlalchemy import (
     Column,
@@ -23,6 +24,7 @@ from c2cgeoform.ext import colander_ext, deform_ext
 
 from c2cgeoform_project.models.meta import Base
 
+import deform
 from deform.widget import HiddenWidget
 from c2cgeoform.ext.deform_ext import RelationSelect2Widget
 
@@ -91,7 +93,7 @@ class Demande(Base):
         nullable=False,
         info={
             'colanderalchemy': {
-                'title': _('Type d''arborisation'),
+                'title': _('Type d\'arborisation'),
                 'widget': RelationSelect2Widget(
                     Type_arborisation,
                     'id',
@@ -104,11 +106,17 @@ class Demande(Base):
     essence = Column(Text, nullable=False)
     diametre = Column(Numeric(5,2), nullable=False)
     hauteur = Column(Numeric(5,2), nullable=False)
-    motif = Column(Text, nullable=False)
+    motif = Column(Text, nullable=False,
+        info={
+            'colanderalchemy': {
+                'title': _('Motif'),
+                'widget': deform.widget.TextAreaWidget(rows=3),
+            }
+        })
     date_demande = Column(Date, info={
         'colanderalchemy': {
             'widget': HiddenWidget()
-        }})
+        }}, default=lambda: date.today())
 
     location_position = Column(
         geoalchemy2.Geometry('POINT', 4326, management=True), info={
