@@ -14,7 +14,7 @@ from c2cgeoform.schema import (
 from c2cgeoform.ext.deform_ext import RelationCheckBoxListWidget
 from c2cgeoform.views.abstract_views import AbstractViews, ListField
 
-from ..models.abattage import Demande, Essence
+from ..models.abattage import Demande, Type_arborisation, Type_travaux
 
 _list_field = partial(ListField, Demande)
 
@@ -29,20 +29,28 @@ class AbattageViews(AbstractViews):
     _id_field = 'id'
 
     _list_fields = [
-        _list_field('id',visible=False),
+        _list_field('id', visible=False),
         _list_field('proprietaire'),
-        _list_field('parcelle'),
         _list_field('adresse'),
-        _list_field('essence', 
-                    renderer=lambda demande: demande.essence.name,
-                    filter_column=Essence.name,
-                    sort_column=Essence.name)
+        _list_field('type_travaux',
+                    renderer=lambda demande: demande.type_travaux.name,
+                    filter_column=Type_travaux.name,
+                    sort_column=Type_travaux.name),
+        _list_field('type_arborisation',
+                    renderer=lambda demande: demande.type_arborisation.name,
+                    filter_column=Type_arborisation.name,
+                    sort_column=Type_arborisation.name),
+        _list_field('essence'),
+        _list_field('diametre'),
+        _list_field('hauteur'),
+        _list_field('motif'),
+        _list_field('date_demande', visible=False)
     ]
 
     def _base_query(self):
         return super()._base_query(). \
-            outerjoin('essence'). \
-            options(subqueryload('essence'))
+            outerjoin('type_travaux'). \
+            options(subqueryload('type_travaux'))
 
     @view_config(route_name='c2cgeoform_index',
                  renderer='../templates/index.jinja2')

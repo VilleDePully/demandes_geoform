@@ -32,6 +32,8 @@ from ..models.c2cgeoform_demo import (
     )
 '''
 
+from ..models.abattage import Type_travaux, Type_arborisation
+
 def usage(argv):
     cmd = os.path.basename(argv[0])
     print('usage: %s <config_uri> [var=value]\n'
@@ -82,7 +84,18 @@ WHERE schema_name = '{}';
 
 
 def setup_test_data(dbsession):
+    if dbsession.query(Type_travaux).count() == 0:
+        dbsession.add(Type_travaux(id=1, name="Abattage"))
+        dbsession.add(Type_travaux(id=2, name="Elagage"))
+        dbsession.add(Type_travaux(id=3, name="Ecimage"))
+
+    if dbsession.query(Type_arborisation).count() == 0:
+        dbsession.add(Type_arborisation(id=1, name="Arbre isolé"))
+        dbsession.add(Type_arborisation(id=2, name="Groupe d'arbres"))
+        dbsession.add(Type_arborisation(id=3, name="Haie ou cordon boisé"))
+
     pass
+
 '''
     if dbsession.query(District).count() == 0:
         dbsession.add(District(id=0, name="Pully"))
