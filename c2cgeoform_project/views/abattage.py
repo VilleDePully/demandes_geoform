@@ -47,11 +47,6 @@ class AbattageViews(AbstractViews):
         _list_field('date_demande', visible=False)
     ]
 
-    def _base_query(self):
-        return super()._base_query(). \
-            outerjoin('type_travaux'). \
-            options(subqueryload('type_travaux'))
-
     @view_config(route_name='c2cgeoform_index',
                  renderer='../templates/index.jinja2')
     def index(self):
