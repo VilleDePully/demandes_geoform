@@ -22,9 +22,10 @@ import geoalchemy2
 from c2cgeoform_project.i18n import _
 from c2cgeoform.ext import colander_ext, deform_ext
 
+from c2cgeoform.models import FileData
 from c2cgeoform_project.models.meta import Base
 
-import deform
+import deform, colander
 from deform.widget import HiddenWidget
 from c2cgeoform.ext.deform_ext import RelationSelect2Widget
 
@@ -33,6 +34,14 @@ from c2cgeoform.ext.deform_ext import RelationSelect2Widget
 schema = 'abattage'
 
 # Classes
+
+# # FIXME a file upload memory store is not appropriate for production
+# # See http://docs.pylonsproject.org/projects/deform/en/latest/interfaces.html#deform.interfaces.FileUploadTempStore  # noqa
+# class FileUploadTempStore(dict):
+#     def preview_url(self, name):
+#         return None
+#
+# _file_upload_temp_store = FileUploadTempStore()
 
 class Type_travaux(Base):
     __tablename__ = 'type_travaux'
@@ -52,11 +61,31 @@ class Type_arborisation(Base):
     id = Column(Integer, primary_key=True)
     name = Column(Text, nullable=False)
 
+# class Photo(FileData, Base):
+#     __tablename__ = 'photo'
+#     __table_args__ = (
+#         {"schema": schema}
+#     )
+#     # Setting unknown to 'preserve' is required in classes used as a
+#     # FileUpload field.
+#     __colanderalchemy_config__ = {
+#         'title': _('Photo'),
+#         'unknown': 'preserve',
+#         'widget': deform_ext.FileUploadWidget(_file_upload_temp_store)
+#     }
+#     demande_id = Column(Integer, ForeignKey("{}.demande.id".format(schema)))
+
 class Demande(Base):
     __tablename__ = 'demande'
     __table_args__ = (
         {"schema": schema}
     )
+
+    __colanderalchemy_config__ = {
+        'title':
+        _('Demande d\'abattage d\'arbres'),
+        'plural': _('Demande d\'abattage d\'arbres')
+    }
 
     id = Column(Integer, primary_key=True, info={
         'colanderalchemy': {
@@ -78,12 +107,13 @@ class Demande(Base):
         info={
             'colanderalchemy': {
                 'title': _('Type de travaux'),
-                'widget': RelationSelect2Widget(
+                'description': _('Type de travaux à entreprendre'),
+                'widget': deform_ext.RelationRadioChoiceWidget(
                     Type_travaux,
                     'id',
                     'name',
                     order_by='id',
-                    default_value=('', _('- Select -'))
+                    inline=True
                 )
             }
         })
@@ -113,6 +143,13 @@ class Demande(Base):
                 'widget': deform.widget.TextAreaWidget(rows=3),
             }
         })
+    email = Column(Text, nullable=False,
+        info={
+            'colanderalchemy': {
+                'title':_('E-mail'),
+                'validator': colander.Email()
+            }
+        })
     date_demande = Column(Date, info={
         'colanderalchemy': {
             'widget': HiddenWidget()
@@ -124,9 +161,19 @@ class Demande(Base):
                 'title': _('Position'),
                 'typ':
                 colander_ext.Geometry('POINT', srid=4326, map_srid=3857),
-                'widget': deform_ext.MapWidget()
+                'widget': deform_ext.MapWidget(
+                    center=[741934,5863213],
+                    zoom=14
+                )
             }}, nullable=False)
 
     type_travaux = relationship('Type_travaux', info={'colanderalchemy': {'exclude': True}})
     type_arborisation = relationship('Type_arborisation', info={'colanderalchemy': {'exclude': True}})
 
+    # photos = relationship(
+    #     Photo,
+    #     cascade="all, delete-orphan",
+    #     info={
+    #         'colanderalchemy': {
+    #             'title': _('Photo')
+    #         }})

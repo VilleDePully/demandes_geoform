@@ -26,7 +26,7 @@ class AbattageViews(AbstractViews):
 
     _model = Demande
     _base_schema = base_schema
-    _id_field = 'id'
+    _id_field = 'hash'
 
     _list_fields = [
         _list_field('id', visible=False),

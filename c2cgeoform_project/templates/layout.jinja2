@@ -7,7 +7,7 @@
     <meta name="description" content="pyramid web application">
     <meta name="author" content="Camptocamp">
 
-    <title>c2cgeoform_project</title>
+    <title>Ville de Pully : {{ title }}</title>
     <link rel="shortcut icon" href="{{request.static_url('c2cgeoform_project:static/favicon.ico')}}">
 
     <!-- Bootstrap core CSS -->
@@ -52,7 +52,9 @@
   </head>
 
   <body>
-
+    {% block header %}
+      {% include 'header.jinja2' %}
+    {% endblock header %}
     
     {% block navigation %}
       {% include 'c2cgeoform:/templates/navigation.jinja2' %}
