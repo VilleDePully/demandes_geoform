@@ -163,7 +163,8 @@ class Demande(Base):
                 colander_ext.Geometry('POINT', srid=4326, map_srid=3857),
                 'widget': deform_ext.MapWidget(
                     center=[741934,5863213],
-                    zoom=14
+                    zoom=14,
+                    fit_max_zoom=18
                 )
             }}, nullable=False)
 

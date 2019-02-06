@@ -56,12 +56,13 @@ def main(argv=sys.argv):
 
 
 def init_db(connection, force=False):
-    if force:
-        if schema_exists(connection, schema):
-            connection.execute("DROP SCHEMA {} CASCADE;".format(schema))
+    for schema in ("abattage", "c2cgeoform_demo"):
+        if force:
+            if schema_exists(connection, schema):
+                connection.execute("DROP SCHEMA {} CASCADE;".format(schema))
 
-    if not schema_exists(connection, schema):
-        connection.execute("CREATE SCHEMA \"{}\";".format(schema))
+        if not schema_exists(connection, schema):
+            connection.execute("CREATE SCHEMA \"{}\";".format(schema))
 
     Base.metadata.create_all(connection)
 
