@@ -52,7 +52,7 @@ flake8: .build/requirements-dev.timestamp
 	$(VENV_BIN)/flake8 c2cgeoform_project
 
 .PHONY: modwsgi
-modwsgi: build .build/venv/c2cgeoform_project.wsgi .build/apache.conf
+modwsgi: build .build/c2cgeoform_project.wsgi .build/apache.conf
 
 .PHONY: test
 test: build .build/requirements-dev.timestamp
@@ -95,13 +95,12 @@ dist: .build/venv.timestamp compile-catalog
 	$(VENV_BIN)/pip install -r requirements-dev.txt > /dev/null 2>&1
 	touch $@
 
-.build/venv/c2cgeoform_project.wsgi: c2cgeoform_project.wsgi
+.build/c2cgeoform_project.wsgi: c2cgeoform_project.wsgi
 	sed 's#\[DIR\]#$(CURDIR)#' $< > $@
 	chmod 755 $@
 
 .build/apache.conf: apache.conf .build/venv.timestamp
-	sed -e 's#\[PYTHONPATH\]#$(shell $(VENV_BIN)/python -c "import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())")#' \
-        -e 's#\[WSGISCRIPT\]#$(abspath .build/venv/c2cgeoform_project.wsgi)#' \
+	sed -e 's#\[WSGISCRIPT\]#$(abspath .build/c2cgeoform_project.wsgi)#' \
         -e 's#\[INSTANCE_ID\]#$(INSTANCE_ID)#' \
         -e 's#\[APACHE_ENTRY_POINT\]#$(APACHE_ENTRY_POINT)#' $< > $@
 
